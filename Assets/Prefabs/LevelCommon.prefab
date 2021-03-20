@@ -781,6 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c40a12b99140643961c802ada11a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelMenuPanel: {fileID: 1164224047}
 --- !u!1 &2144785729
 GameObject:
   m_ObjectHideFlags: 0
