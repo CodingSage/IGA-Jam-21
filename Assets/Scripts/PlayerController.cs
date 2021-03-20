@@ -4,69 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //new Rigidbody rigidbody;
-
-    //public float movementSpeed = 100.0f;
-    //public float jumpSpeed = 100.0f;
-
-    //private bool jumping;
-    //private Vector3 targetVelocity;
-
-    //void Start()
-    //{
-    //    rigidbody = GetComponent<Rigidbody>();
-    //    jumping = false;
-    //    targetVelocity = Vector3.zero;
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    ProcessMove();
-
-    //    if (Input.GetButtonDown("Jump"))
-    //    {
-    //        ProcessJump();
-    //    }
-
-    //    //ApplyVelocity(targetVelocity);
-    //}
-
-    //private void ProcessMove()
-    //{
-    //    //targetVelocity.x = Input.GetAxisRaw("Horizontal");
-    //    //targetVelocity.z = Input.GetAxisRaw("Vertical");
-
-    //    float moveHorizontal = Input.GetAxis("Horizontal");
-    //    float moveVertical = Input.GetAxis("Vertical");
-
-    //    Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-    //    rigidbody.AddForce(movement);
-    //}
-
-    //private void ProcessJump()
-    //{
-    //    if (!jumping)
-    //    {
-    //        jumping = true;
-
-    //        rigidbody.AddForce(new Vector3(0.0f, jumpSpeed, 0.0f));
-    //    }
-    //}
-
-    //private void ApplyVelocity(Vector3 targetVelocity)
-    //{
-    //    rigidbody.velocity = (targetVelocity * movementSpeed) * Time.deltaTime;
-
-    //    rigidbody.velocity = new Vector3(
-    //            targetVelocity.x * movementSpeed * Time.deltaTime,
-    //            rigidbody.velocity.y,
-    //            targetVelocity.z * movementSpeed * Time.deltaTime);
-    //}
-
     [SerializeField]
     private float moveSpeed = 5.0f;
+
+    [SerializeField]
+    private float pushPower = 2f;
 
     [SerializeField]
     private float gravityAcceleration = 9.81f;
@@ -101,5 +43,32 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(hAxis, ySpeed, vAxis);
 
         controller.SimpleMove(direction * moveSpeed);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        // no rigidbody
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+
+        // We dont want to push objects below us
+        if (hit.moveDirection.y < -0.3)
+        {
+            return;
+        }
+
+        // Calculate push direction from move direction,
+        // we only push objects to the sides never up and down
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+        // If you know how fast your character is trying to move,
+        // then you can also multiply the push velocity by that.
+
+        // Apply the push
+        body.velocity = pushDir * pushPower;
     }
 }
