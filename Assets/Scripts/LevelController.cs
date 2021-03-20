@@ -9,9 +9,9 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && levelMenuPanel != null)
         {
-            levelMenuPanel.SetActive(!levelMenuPanel.active);
+            levelMenuPanel.SetActive(!levelMenuPanel.activeSelf);
         }
     }
 
