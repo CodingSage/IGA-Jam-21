@@ -10,18 +10,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float pushPower = 2f;
 
-    [SerializeField]
-    private float gravityAcceleration = 9.81f;
-    private float ySpeed;
-    private float fallTime;
+    //[SerializeField]
+    //private float gravityAcceleration = 9.81f;
+    //private float ySpeed;
+    //private float fallTime;
 
     private CharacterController controller;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        ySpeed = 0.0f;
-        fallTime = 0.0f;
+        //ySpeed = 0.0f;
+        //fallTime = 0.0f;
     }
 
     void Update()
@@ -40,7 +40,9 @@ public class PlayerController : MonoBehaviour
         //    ySpeed -= gravityAcceleration * fallTime;
         //}
 
-        Vector3 direction = new Vector3(hAxis, ySpeed, vAxis);
+        //Vector3 direction = new Vector3(hAxis, ySpeed, vAxis);
+
+        Vector3 direction = new Vector3(hAxis, 0.0f, vAxis);
 
         controller.SimpleMove(direction * moveSpeed);
     }
