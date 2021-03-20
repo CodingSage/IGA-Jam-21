@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public Collider levelExitTrigger;
+
     [SerializeField]
     private float moveSpeed = 5.0f;
 
@@ -22,6 +25,11 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         //ySpeed = 0.0f;
         //fallTime = 0.0f;
+
+        if (levelExitTrigger == null)
+        {
+            Debug.LogError("Level Exit Trigger must be set on Player object!");
+        }
     }
 
     void Update()
@@ -72,5 +80,22 @@ public class PlayerController : MonoBehaviour
 
         // Apply the push
         body.velocity = pushDir * pushPower;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (levelExitTrigger != null)
+        {
+            if (other == levelExitTrigger)
+            {
+                int sceneCount = SceneManager.sceneCountInBuildSettings;
+                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+                if (nextSceneIndex < sceneCount)
+                {
+                    SceneManager.LoadScene(nextSceneIndex);
+                }
+            }
+        }
     }
 }

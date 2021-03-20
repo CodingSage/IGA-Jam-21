@@ -912,6 +912,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &7265160647917549244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5144153382046447224}
+  - component: {fileID: 245397134543517154}
+  m_Layer: 0
+  m_Name: LevelExitTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5144153382046447224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265160647917549244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.06, y: -3.97, z: 17.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8558860515940216815}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &245397134543517154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265160647917549244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.93, y: 1, z: 9.51}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8558860515689663835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1119,7 @@ Transform:
   - {fileID: 1692065508}
   - {fileID: 1164224051}
   - {fileID: 623866907}
+  - {fileID: 5144153382046447224}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1085,6 +1130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8558860515940216815}
     m_Modifications:
+    - target: {fileID: 5288465913678107386, guid: 01068a8b81e14ba4ea6f6a5499dfabe3,
+        type: 3}
+      propertyPath: levelExitTrigger
+      value: 
+      objectReference: {fileID: 245397134543517154}
     - target: {fileID: 5288465913678107389, guid: 01068a8b81e14ba4ea6f6a5499dfabe3,
         type: 3}
       propertyPath: m_RootOrder
