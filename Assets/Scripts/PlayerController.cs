@@ -87,19 +87,19 @@ public class PlayerController : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
-        if (controller.isGrounded)
-        {
-            ySpeed = 0.0f;
-            fallTime = 0.0f;
-        }
-        else
-        {
-            fallTime += Time.deltaTime;
-            ySpeed -= gravityAcceleration * fallTime;
-        }
+        //if (controller.isGrounded)
+        //{
+        //    ySpeed = 0.0f;
+        //    fallTime = 0.0f;
+        //}
+        //else
+        //{
+        //    fallTime += Time.deltaTime;
+        //    ySpeed -= gravityAcceleration * fallTime;
+        //}
 
         Vector3 direction = new Vector3(hAxis, ySpeed, vAxis);
 
-        controller.Move(direction * moveSpeed * Time.deltaTime);
+        controller.SimpleMove(direction * moveSpeed);
     }
 }
