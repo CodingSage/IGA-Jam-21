@@ -19,4 +19,9 @@ public class LevelController : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+    }
 }
