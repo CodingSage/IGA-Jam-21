@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8802958531082397983}
   - component: {fileID: 8802958531082397980}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.12, y: 0.5, z: 3}
+  m_Center: {x: -0.08, y: 0.25, z: 0}
 --- !u!54 &8802958531082397980
 Rigidbody:
   m_ObjectHideFlags: 0
