@@ -23,6 +23,14 @@ public class LevelController : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < sceneCount)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
 
     public void MainMenu()

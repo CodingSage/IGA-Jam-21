@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public Collider levelExitTrigger;
+    public Animator animator;
 
     [SerializeField]
     private float moveSpeed = 5.0f;
@@ -55,6 +56,17 @@ public class PlayerController : MonoBehaviour
         controller.SimpleMove(direction * moveSpeed);
     }
 
+    public void LoadNextLevel()
+    {
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < sceneCount)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody body = hit.collider.attachedRigidbody;
@@ -88,13 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             if (other == levelExitTrigger)
             {
-                int sceneCount = SceneManager.sceneCountInBuildSettings;
-                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-                if (nextSceneIndex < sceneCount)
-                {
-                    SceneManager.LoadScene(nextSceneIndex);
-                }
+                animator.SetTrigger("FadeOut");
             }
         }
     }
