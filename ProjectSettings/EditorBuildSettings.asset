@@ -9,18 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 873273be90f692c49b7744674c59a491
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 7f01ec23be0c8e541b9dfc883b429faf
+    path: Assets/Scenes/KyleScenes/KyleLevel2 (tut).unity
+    guid: f079f0bfb24923a458736e0a7ecb5421
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 8d403370554345c4db7483442d3b027a
+    path: Assets/Scenes/KyleScenes/Level6.unity
+    guid: 915f7c54579dd154fa8621fb640bca52
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 9e9584eaa7f6d1b4381966ee9c1f4daf
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
-    guid: 20cba5b80a0b0bb4694a70b3b70073f9
-  - enabled: 1
-    path: Assets/Scenes/Level5.unity
-    guid: 3ae947b1dbaaa594cb9c86100d572888
+    path: Assets/Scenes/KyleScenes/KyleLevel3.unity
+    guid: a3e9c2ace49033946a58bde775f42d5b
   m_configObjects: {}
