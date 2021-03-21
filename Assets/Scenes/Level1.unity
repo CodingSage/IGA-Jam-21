@@ -1812,7 +1812,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 55d90e64e0b4f5a439035ddd4ee6bf62,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55d90e64e0b4f5a439035ddd4ee6bf62,
         type: 3}
@@ -2557,7 +2557,7 @@ GameObject:
   - component: {fileID: 1702809419}
   - component: {fileID: 1702809418}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: Med_Box Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2638,7 +2638,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702809417}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5140006388671148998, guid: 2db217a664e5b9c4d91aec6774a033ac, type: 3}
 --- !u!4 &1702809422
 Transform:
   m_ObjectHideFlags: 0
@@ -2648,7 +2648,7 @@ Transform:
   m_GameObject: {fileID: 1702809417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.97, y: 0.75, z: -10.77}
-  m_LocalScale: {x: 2, y: 1.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -2921,7 +2921,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4c9172e7f8da0cb43b1389578bb450db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c9172e7f8da0cb43b1389578bb450db,
         type: 3}
