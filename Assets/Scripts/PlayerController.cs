@@ -14,18 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float pushPower = 2f;
 
-    //[SerializeField]
-    //private float gravityAcceleration = 9.81f;
-    //private float ySpeed;
-    //private float fallTime;
-
     private CharacterController controller;
+    private float stepOffset;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        //ySpeed = 0.0f;
-        //fallTime = 0.0f;
+        stepOffset = controller.stepOffset;
 
         if (levelExitTrigger == null)
         {
@@ -38,18 +33,8 @@ public class PlayerController : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
-        //if (controller.isGrounded)
-        //{
-        //    ySpeed = 0.0f;
-        //    fallTime = 0.0f;
-        //}
-        //else
-        //{
-        //    fallTime += Time.deltaTime;
-        //    ySpeed -= gravityAcceleration * fallTime;
-        //}
-
-        //Vector3 direction = new Vector3(hAxis, ySpeed, vAxis);
+        // Disable stepping if push action is in progress
+        controller.stepOffset = Input.GetKey(KeyCode.Space) ? 0f : stepOffset;
 
         Vector3 direction = new Vector3(hAxis, 0.0f, vAxis);
 
@@ -71,14 +56,12 @@ public class PlayerController : MonoBehaviour
     {
         Rigidbody body = hit.collider.attachedRigidbody;
 
-        // no rigidbody
-        if (body == null || body.isKinematic)
-        {
-            return;
-        }
-
-        // We dont want to push objects below us
-        if (hit.moveDirection.y < -0.3)
+        if (// Push action not enabled
+            !Input.GetKey(KeyCode.Space)
+            // no rigidbody
+            || body == null || body.isKinematic
+            // We dont want to push objects below us
+            || hit.moveDirection.y < -0.3)
         {
             return;
         }
