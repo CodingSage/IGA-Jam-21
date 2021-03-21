@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private Slider soundVolumeSlider = default;
@@ -20,7 +21,6 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource soundAudio;
     private AudioSource musicAudio;
-    
 
     enum VolumePrefKeys
     {
@@ -55,6 +55,11 @@ public class AudioManager : MonoBehaviour
         {
             sounds.Add(clip.name.ToUpper(), clip);
         }
+
+        if(musicClips.Length != 0)
+        {
+            PlayMusic(musicClips[0].name);
+        }
     }
 
     public void PlaySound(string soundName)
@@ -80,12 +85,14 @@ public class AudioManager : MonoBehaviour
     public void UpdateSoundVolume()
     {
         soundVolume = soundVolumeSlider.value;
+        soundAudio.volume = soundVolume;
         PlayerPrefs.SetFloat(VolumePrefKeys.SOUND.ToString(), soundVolume);
     }
 
     public void UpdateMusicVolume()
     {
         musicVolume = musicVolumeSlider.value;
+        musicAudio.volume = musicVolume;
         PlayerPrefs.SetFloat(VolumePrefKeys.MUSIC.ToString(), musicVolume);
     }
 
