@@ -85,12 +85,14 @@ public class AudioManager : MonoBehaviour
     public void UpdateSoundVolume()
     {
         soundVolume = soundVolumeSlider.value;
+        soundAudio.volume = soundVolume;
         PlayerPrefs.SetFloat(VolumePrefKeys.SOUND.ToString(), soundVolume);
     }
 
     public void UpdateMusicVolume()
     {
         musicVolume = musicVolumeSlider.value;
+        musicAudio.volume = musicVolume;
         PlayerPrefs.SetFloat(VolumePrefKeys.MUSIC.ToString(), musicVolume);
     }
 
