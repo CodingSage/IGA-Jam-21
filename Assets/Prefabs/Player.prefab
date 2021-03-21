@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelExitTrigger: {fileID: 0}
   animator: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 3.5
   pushPower: 2
 --- !u!143 &5288465913678107391
 CharacterController:
