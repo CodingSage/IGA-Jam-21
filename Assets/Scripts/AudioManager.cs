@@ -19,8 +19,23 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] musicClips;
     private Dictionary<string, AudioClip> music;
 
+    public AudioClip walkingSound;
+    public AudioClip pushingSound;
+
     private AudioSource soundAudio;
     private AudioSource musicAudio;
+    private AudioSource walkingSoundAudio;
+    private AudioSource pushingSoundAudio;
+
+    public bool WalkingSoundPlaying
+    {
+        get { return walkingSoundAudio.isPlaying; }
+    }
+
+    public bool PushingSoundPlaying
+    {
+        get { return pushingSoundAudio.isPlaying; }
+    }
 
     enum VolumePrefKeys
     {
@@ -30,16 +45,18 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        if(audioSources.Length != 2)
+        if(audioSources.Length != 4)
         {
-            throw new MissingComponentException("2 Audio sources needed in audio manager");
+            throw new MissingComponentException("4 Audio sources needed in audio manager");
         }
         soundAudio = audioSources[0];
         musicAudio = audioSources[1];
+        walkingSoundAudio = audioSources[2];
+        pushingSoundAudio = audioSources[3];
 
         musicVolume = PlayerPrefs.GetFloat(VolumePrefKeys.MUSIC.ToString(), 0.8f);
         musicVolumeSlider.value = musicVolume;
-        musicAudio.volume = musicVolume;
+        musicAudio.volume = musicVolume * 0.25f;
         musicAudio.loop = true;
         music = new Dictionary<string, AudioClip>();
         foreach (AudioClip clip in musicClips)
@@ -51,6 +68,7 @@ public class AudioManager : MonoBehaviour
         soundVolumeSlider.value = soundVolume;
         soundAudio.volume = soundVolume;
         soundAudio.loop = false;
+        sounds = new Dictionary<string, AudioClip>();
         foreach (AudioClip clip in soundEffects)
         {
             sounds.Add(clip.name.ToUpper(), clip);
@@ -60,6 +78,14 @@ public class AudioManager : MonoBehaviour
         {
             PlayMusic(musicClips[0].name);
         }
+
+        walkingSoundAudio.volume = soundVolume;
+        walkingSoundAudio.loop = true;
+        walkingSoundAudio.clip = walkingSound;
+
+        pushingSoundAudio.volume = soundVolume;
+        pushingSoundAudio.loop = true;
+        pushingSoundAudio.clip = pushingSound;
     }
 
     public void PlaySound(string soundName)
@@ -82,17 +108,45 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayWalkingSound()
+    {
+        walkingSoundAudio.Play();
+    }
+
+    public void StopWalkingSound()
+    {
+        if (walkingSoundAudio.isPlaying)
+        {
+            walkingSoundAudio.Stop();
+        }
+    }
+
+    public void PlayPushingSound()
+    {
+        pushingSoundAudio.Play();
+    }
+
+    public void StopPushingSound()
+    {
+        if (pushingSoundAudio.isPlaying)
+        {
+            pushingSoundAudio.Stop();
+        }
+    }
+
     public void UpdateSoundVolume()
     {
         soundVolume = soundVolumeSlider.value;
         soundAudio.volume = soundVolume;
+        walkingSoundAudio.volume = soundVolume;
+        pushingSoundAudio.volume = soundVolume;
         PlayerPrefs.SetFloat(VolumePrefKeys.SOUND.ToString(), soundVolume);
     }
 
     public void UpdateMusicVolume()
     {
         musicVolume = musicVolumeSlider.value;
-        musicAudio.volume = musicVolume;
+        musicAudio.volume = musicVolume * 0.25f;
         PlayerPrefs.SetFloat(VolumePrefKeys.MUSIC.ToString(), musicVolume);
     }
 

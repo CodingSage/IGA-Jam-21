@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public Collider levelExitTrigger;
     public Animator animator;
+    public AudioManager audioManager;
 
     [SerializeField]
     private float moveSpeed = 5.0f;
@@ -15,12 +16,16 @@ public class PlayerController : MonoBehaviour
     private float pushPower = 2f;
 
     private CharacterController controller;
+    private Vector3 previousFramePos;
     private float stepOffset;
+    private bool dragging;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        previousFramePos = transform.position;
         stepOffset = controller.stepOffset;
+        dragging = false;
 
         if (levelExitTrigger == null)
         {
@@ -28,7 +33,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void LateUpdate()
+    {
+        //if (!Input.GetKey(KeyCode.Space))
+        //{
+        //    dragging = false;
+        //}
+    }
+
+    void FixedUpdate()
     {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
@@ -38,7 +51,26 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direction = new Vector3(hAxis, 0.0f, vAxis);
 
-        controller.SimpleMove(direction * moveSpeed);
+        if (direction.magnitude > 0.0f)
+        {
+            controller.SimpleMove(direction * moveSpeed);
+        }
+
+        Vector3 moveDistance = transform.position - previousFramePos;
+
+        if (moveDistance.magnitude > 0.05f)
+        {
+            if (!audioManager.WalkingSoundPlaying)
+            {
+                audioManager.PlayWalkingSound();
+            }
+        }
+        else
+        {
+            audioManager.StopWalkingSound();
+        }
+
+        previousFramePos = transform.position;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
