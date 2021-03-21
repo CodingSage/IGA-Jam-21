@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour
 {
     public GameObject levelMenuPanel;
 
+    public Animator animator;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && levelMenuPanel != null)
@@ -15,7 +17,12 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void ReplayLevel()
+    public void RestartLevel()
+    {
+        animator.SetTrigger("FadeOut");
+    }
+
+    public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -43,5 +50,10 @@ public class LevelController : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

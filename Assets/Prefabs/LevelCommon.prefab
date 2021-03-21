@@ -108,7 +108,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8558860515940216815}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &623866906
 MonoBehaviour:
@@ -256,7 +256,7 @@ RectTransform:
   m_Children:
   - {fileID: 1603636677}
   m_Father: {fileID: 8558860515940216815}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1692065507}
+      - m_Target: {fileID: 4878492177975991335}
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 1482829932}
   - component: {fileID: 1482829931}
   m_Layer: 5
-  m_Name: ReplayLevelButton
+  m_Name: RestartLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,8 +572,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1692065507}
-        m_MethodName: ReplayLevel
+      - m_Target: {fileID: 4878492177975991335}
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -737,51 +737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Replay Level
---- !u!1 &1692065506
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1692065508}
-  - component: {fileID: 1692065507}
-  m_Layer: 0
-  m_Name: LevelController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1692065508
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692065506}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7670946, y: -4.6683426, z: 4.037734}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8558860515940216815}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1692065507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692065506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c40a12b99140643961c802ada11a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelMenuPanel: {fileID: 1164224047}
+  m_Text: Restart Level
 --- !u!1 &2144785729
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +857,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1692065507}
+      - m_Target: {fileID: 4878492177975991335}
         m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
@@ -1343,7 +1299,7 @@ Transform:
   m_Children:
   - {fileID: 6806126534591427337}
   m_Father: {fileID: 8558860515940216815}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5836951581309552421
 Animator:
@@ -1376,7 +1332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c40a12b99140643961c802ada11a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelMenuPanel: {fileID: 0}
+  levelMenuPanel: {fileID: 1164224047}
+  animator: {fileID: 5836951581309552421}
 --- !u!1 &5115540161618490650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,7 +1437,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8558860515940216815}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &245397134543517154
 BoxCollider:
@@ -1729,7 +1686,6 @@ Transform:
   m_Children:
   - {fileID: 8558860516368872722}
   - {fileID: 8558860515689663836}
-  - {fileID: 1692065508}
   - {fileID: 1164224051}
   - {fileID: 623866907}
   - {fileID: 5144153382046447224}

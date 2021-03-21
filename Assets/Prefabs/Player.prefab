@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5288465913312962990}
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: -0.043, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.2}
+  m_LocalScale: {x: 0.08, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 5288465913678107389}
   m_RootOrder: 0
@@ -124,8 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193838cf6c560fa48973d05a95bf6957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelExitTrigger: {fileID: 0}
+  animator: {fileID: 0}
   moveSpeed: 5
-  gravityAcceleration: 1.25
+  pushPower: 2
 --- !u!143 &5288465913678107391
 CharacterController:
   m_ObjectHideFlags: 0
@@ -138,9 +140,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.5
-  m_Radius: 0.6
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: -0.08}
+  m_Center: {x: 0, y: 0, z: 0.3}
